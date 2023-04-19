@@ -31,14 +31,12 @@ jobs:
     name: Check ${{ matrix.changed_file }}
     steps:
       - name: Set up Go 1.13
-        if: ${{ env.keepgoing == 'true' }}
         uses: actions/setup-go@v1
         with:
           go-version: 1.13
         id: go
 
       - name: Install Dependencies
-        if: ${{ env.keepgoing == 'true' }}
         run: |
           sudo apt-get update && sudo apt-get install -y \
             build-essential \
@@ -50,7 +48,6 @@ jobs:
             pkg-config
 
       - name: Install Singularity
-        if: ${{ env.keepgoing == 'true' }}
         env:
           SINGULARITY_VERSION: 3.8.1
           GOPATH: /tmp/go
@@ -68,11 +65,9 @@ jobs:
           sudo make -C builddir install          
 
       - name: Check out code for the container build
-        if: ${{ env.keepgoing == 'true' }}
         uses: actions/checkout@v2
 
       - name: Build Container
-        if: ${{ env.keepgoing == 'true' }}
         env:
           recipe: ${{ matrix.changed_file }}
         run: |
@@ -94,10 +89,6 @@ jobs:
 
       - name: Login and Deploy Container
         if: (github.event_name != 'pull_request')
-        env:
-          keepgoing: ${{ env.keepgoing }}
         run: |         
-            if [[ "${keepgoing}" == "true" ]]; then
-                echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
-                singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag}
-            fi
+            echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
+            singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag}
