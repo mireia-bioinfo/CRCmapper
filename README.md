@@ -17,7 +17,7 @@ To build Core Regulatory Circuitry from H3K27ac ChIP-seq data
 #### 1. REQUIREMENTS
 FIMO (Grant et al. 2011) from the MEME suite and SAMtools (http://www.htslib.org/) (Li et al., 2009) must be installed
 
-Code must be run from the directory in which it is stored together with `TFlist_NMid_hg.txt`, `TFlist_NMid_ms.txt`, `VertebratePWMs.txt`, `MotifDictionary.txt`, `bamToGFF.py`, `utils.py`, `bamToGFFutils.py` and a directory named "annotation" containing the genome annotation files (`hg19_refseq.ucsc`, `hg18_refseq.ucsc`, `mm9_refseq.ucsc`)
+Code must be run from the directory in which it is stored together with `TFlist_NMid_hg.txt`, `TFlist_NMid_ms.txt`, `VertebratePWMs.txt`, `MotifDictionary.txt`, `bamToGFF.py`, `utils.py`, `bamToGFFutils.py` and a directory named "annotation" containing the genome annotation files (`hg38_refseq.ucsc`, `hg19_refseq.ucsc`, `hg18_refseq.ucsc`, `mm9_refseq.ucsc`)
 
 The bam file of sequencing reads for H3K27ac must be sorted and indexed using SAMtools
 
@@ -39,7 +39,7 @@ Fasta files for the genome used must be placed in a directory that will be speci
 
 `bamToGFF.py`: program calculating density of sequencing reads from the bam file in specified regions, and the genome annotation file (<https://github.com/bradnerComputation/pipeline/blob/master/bamToGFF.py>) (Lin et al. 2012)
 
-`annotation/hg19_refseq.ucsc`, `annotation/hg18_refseq.ucsc` and `annotation/mm9_refseq.ucsc`: genome annotation files
+`annotation/hg38_refseq.ucsc`, `annotation/hg19_refseq.ucsc`, `annotation/hg18_refseq.ucsc` and `annotation/mm9_refseq.ucsc`: genome annotation files
 
 #### 3. USAGE
 
@@ -60,7 +60,7 @@ Required parameters:
 
 `-g` [GENOME]
 
-[GENOME]: build of the genome to be used for the analysis. Currently supports HG19, HG18 and MM9
+[GENOME]: build of the genome to be used for the analysis. Currently supports HG38, HG19, HG18 and MM9
 
 `-f` [FASTA]
 

@@ -496,7 +496,7 @@ def main():
     parser.add_option("-b","--bam_file",dest="bam",nargs =1, default = None,
                       help = "Provide a sorted indexed bam file for H3K27ac sequencing reads")
     parser.add_option("-g","--genome",dest="genome",nargs =1, default = None,
-                      help = "Provide the build of the genome to be used for the analysis. Currently supports HG19, HG18 and MM9")
+                      help = "Provide the build of the genome to be used for the analysis. Currently supports HG38, HG19, HG18 and MM9")
     parser.add_option("-f","--fasta",dest="fasta",nargs =1, default = None,
                       help = "Enter location of the fasta files for the genome version used")
     parser.add_option("-s","--subpeaks", dest="subpeaks",nargs=1,default=None,
@@ -529,6 +529,10 @@ def main():
 
         genome = options.genome
         genome = upper(genome)
+
+        if genome == 'HG38':
+            annotationFile = './annotation/hg38_refseq.ucsc'
+            TFfile = './TFlist_NMid_hg.txt'
 
         if genome == 'HG19':
             annotationFile = './annotation/hg19_refseq.ucsc'
