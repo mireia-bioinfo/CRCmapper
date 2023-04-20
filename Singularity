@@ -2,7 +2,7 @@ Bootstrap: library
 From: ubuntu:20.04
 
 %environment
-	export PATH=$PATH:/meme/bin:/samtools/bin
+	export PATH=$PATH:/meme/bin:/meme/libexec/meme-5.5.2:/samtools/bin
 
 %post
 	apt update && apt install -y \
@@ -56,3 +56,4 @@ From: ubuntu:20.04
 %runscript
 	cd /CRCmapper
 	exec python CRCmapper.py "$@"
+
