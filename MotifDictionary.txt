@@ -1,3 +1,9 @@
+FOXA2-Human_Islets	FOXA2
+MAFB-Human-Islets	MAFB
+NKX2.2-Human-Islets	NKX2-2
+NKX6.1-Human-Islets	NKX6-1
+PDX1-Human-Islets	PDX1
+YY1-T372R	YY1
 Transfac.V$ZIC2_01	ZIC2
 Transfac.V$DBP_Q6	DBP
 Transfac.V$ZIC2_04	ZIC2
