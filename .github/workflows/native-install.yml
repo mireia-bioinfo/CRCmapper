@@ -4,11 +4,10 @@ on:
     # Edit the branches here if you want to change deploy behavior
     branches:
       - main
-      - master
 
 jobs:
   changes:
-    name: "Changed Singularity Recipes"
+    name: "Build Singularity Image"
     runs-on: ubuntu-latest
     outputs:
       changed_file: ${{ steps.files.outputs.added_modified }}
